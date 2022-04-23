@@ -3,7 +3,7 @@ from tkinter import *
 import random
 
 #Create the tkinter instance
-root = TK()
+root = Tk()
 #Create the geometry
 root.geometry("400x400")
 
