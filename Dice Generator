@@ -1,16 +1,28 @@
+#The tkinter program whichc generates the GUI
 from tkinter import *
 import random
 
+#Create the tkinter instance
 root = TK()
-
+#Create the geometry
 root.geometry("400x400")
 
+#Enter user input for number of dice
+num_dice_input = input("How many dice do you want to roll? [1-6] ")
+num_dice = parse_input(num_dice_input)
+
+
+#GUI will have two basic components
+#1.Button which will trigger the rolling of dice
+#2.Dice label
 l1 = Label(root,font = ("Helvetica", 260))
 
 def roll():
-
+  #create a number variable in which the list of all the ASCII characters of the string will be stored
+  #Use backslash because unicode must have a backslash 
   dice = ['\u2680','\u2681','\u2682','\u2683','\u2684','\u2685']
-  l1.config(text = f'{random.choice(dice)}{random.choice(dice)}')
+ #configure the label
+ l1.config(text = f'{random.choice(dice)}{random.choice(dice)}')
     l1.pack()
 
 b1=Button(root,text="Roll the Dice!",foreground='blue',command=roll)
