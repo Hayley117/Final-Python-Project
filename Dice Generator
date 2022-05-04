@@ -2,34 +2,20 @@
 from tkinter import *
 import random
 
-#Create the tkinter instance
-root = Tk()
-#Create the geometry
-root.geometry("400x400")
-
-def parse_input(input_string):
-    """Return `input_string` as an integer between 1 and 6.
-
-    Check if `input_string` is an integer number between 1 and 6.
-    If so, return an integer with the same value. Otherwise, tell
-    the user to enter a valid number and quit the program.
-    """
-    if input_string.strip() in {"1", "2", "3", "4", "5", "6"}:
-        return int(input_string)
-    else:
-        print("Please enter a number from 1 to 6.")
-        raise SystemExit(1)
+#Number of dice you want to roll
+dice_amount = input("How many dice do you want to roll? [1-6] ")
+dice_rolls = []
+loop = True
+while loop is True:
+    for i in range(dice_amount):
+        dice_rolls.append(random.randint(1, 6))
         
+    for l in dice_rolls:
+    
+        print(f"You rolled a {l}!")
 
-#Enter user input for number of dice
-num_dice_input = input("How many dice do you want to roll? [1-6] ")
-num_dice = parse_input(num_dice_input)
-
-#GUI will have two basic components
-#1.Button which will trigger the rolling of dice
-#2.Dice label
-l1 = Label(root,font = ("Helvetica", 260))
-
+import random
+print("""
 def roll():
   #create a number variable in which the list of all the ASCII characters of the string will be stored
   #Use backslash because unicode must have a backslash 
@@ -37,6 +23,25 @@ def roll():
  #configure the label
   l1.config(text = f'{random.choice(dice)}{random.choice(dice)}{random.choice(dice)}{random.choice(dice)}{random.choice(dice)}{random.choice(dice)}')
   l1.pack()
+        
+   check = input("Would you like to roll again? (Yes or No)")
+   if check == "Yes":
+      loop = True
+      dice_rolls = []
+      print("---------------------------------------------")
+  else:
+      loop = False
+      dice_rolls = []
+      print("--------------------------------------------")
+#Create the tkinter instance
+root = Tk()
+#Create the geometry
+root.geometry("400x400")
+
+#GUI will have two basic components
+#1.Button which will trigger the rolling of dice
+#2.Dice label
+l1 = Label(root,font = ("Helvetica", 260))
 
 b1=Button(root,text="Roll the Dice!",foreground='blue',command=roll)
 b1.place(x=300,y=0)
